@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog buttons="accept,cancel" id="googlesharing-add-edit-proxy" 
+	ondialogaccept="return onDialogOK();"
+	onload="onDialogLoad();" title="Add / Edit Proxy" 
+	width="615" height="530"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script src="Proxy.js" />
+<script src="Filter.js" />
+<script src="addEditProxy.js" />
+
+<vbox>
+      <hbox>
+	<label value="Add a Google Sharing proxy server of your choice." />
+      </hbox>
+      <separator />
+      <grid>
+      	    <columns>
+		<column/>
+		<column flex="1" />
+	    </columns>
+
+	    <rows>
+		<row align="center">
+		     <label value="Host:" flex="1" />
+		     <textbox id="proxy-host" flex="1" />
+		     <label value="HTTP Port:" flex="1" />
+		     <textbox id="http-port" flex="1" value="80" maxlength="5" size="4"/>
+		     <label value="SSL Port:" flex="1" />
+		     <textbox id="ssl-port" flex="1" value="443" maxlength="5" size="4"/>
+		     <checkbox id="use-ssl" label="Use SSL" checked="true"/>
+		</row>
+<!--
+		<row align="center">
+		     <label value="Port:" flex="1" />
+		     <textbox id="proxy-port" flex="1" />
+		</row>
+-->
+	      </rows>
+     </grid>
+<separator />
+<vbox>
+  <label value="Do not proxy the following services:" />
+  <hbox>
+    <checkbox id="maps" label="Maps" />
+    <checkbox id="groups" label="Groups" />
+    <checkbox id="news" label="News" />
+    <checkbox id="video" label="Video" />
+    <checkbox id="products" label="Products" />
+    <checkbox id="images" label="Images" />
+    <checkbox id="finance" label="Finance" />
+    <checkbox id="code" label="Code" />
+  </hbox>
+</vbox>
+<separator />
+<hbox style="font-size:small;">
+  <vbox>
+    <label value="Google Interface Language:"/>
+    <menulist id="interface-language">
+      <menupopup>
+	<menuitem value="af" label="Afrikaans" />
+	<menuitem value="ak" label="Akan" />
+	<menuitem value="sq" label="Albanian" />
+	<menuitem value="am" label="Amharic" />
+	<menuitem value="ar" label="Arabic" />
+	<menuitem value="hy" label="Armenian" />
+	<menuitem value="az" label="Azerbaijani" />
+	<menuitem value="eu" label="Basque" />
+	<menuitem value="be" label="Belarusian" />
+	<menuitem value="bn" label="Bengali" />
+	<menuitem value="bh" label="Bihari" />
+	<menuitem value="xx-bork" label="Bork, bork, bork!" />
+	<menuitem value="bs" label="Bosnian" />
+	<menuitem value="br" label="Breton" />
+	<menuitem value="bg" label="Bulgarian" />
+	<menuitem value="km" label="Cambodian" />
+	<menuitem value="ca" label="Catalan" />
+	<menuitem value="zh-CN" label="Chinese (Simplified)" />
+	<menuitem value="zh-TW" label="Chinese (Traditional)" />
+	<menuitem value="co" label="Corsican" />
+	<menuitem value="hr" label="Croatian" />
+	<menuitem value="cs" label="Czech" />
+	<menuitem value="da" label="Danish" />
+	<menuitem value="nl" label="Dutch" />
+	<menuitem value="xx-elmer" label="Elmer Fudd" />
+	<menuitem value="en" label="English" />
+	<menuitem value="eo" label="Esperanto" />
+	<menuitem value="et" label="Estonian" />
+	<menuitem value="fo" label="Faroese" />
+	<menuitem value="tl" label="Filipino" />
+	<menuitem value="fi" label="Finnish" />
+	<menuitem value="fr" label="French" />
+	<menuitem value="fy" label="Frisian" />
+	<menuitem value="gl" label="Galician" />
+	<menuitem value="ka" label="Georgian" />
+	<menuitem value="de" label="German" />
+	<menuitem value="el" label="Greek" />
+	<menuitem value="gn" label="Guarani" />
+	<menuitem value="gu" label="Gujarati" />
+	<menuitem value="xx-hacker" label="Hacker" />
+	<menuitem value="ha" label="Hausa" />
+	<menuitem value="haw" label="Hawaiian" />
+	<menuitem value="iw" label="Hebrew" />
+	<menuitem value="hi" label="Hindi" />
+	<menuitem value="hu" label="Hungarian" />
+	<menuitem value="is" label="Icelandic" />
+	<menuitem value="ig" label="Igbo" />
+	<menuitem value="id" label="Indonesian" />
+	<menuitem value="ia" label="Interlingua" />
+	<menuitem value="ga" label="Irish" />
+	<menuitem value="it" label="Italian" />
+	<menuitem value="ja" label="Japanese" />
+	<menuitem value="jw" label="Javanese" />
+	<menuitem value="kn" label="Kannada" />
+	<menuitem value="kk" label="Kazakh" />
+	<menuitem value="rw" label="Kinyarwanda" />
+	<menuitem value="rn" label="Kirundi" />
+	<menuitem value="xx-klingon" label="Klingon" />
+	<menuitem value="ko" label="Korean" />
+	<menuitem value="ku" label="Kurdish" />
+	<menuitem value="ky" label="Kyrgyz" />
+	<menuitem value="lo" label="Laothian" />
+	<menuitem value="la" label="Latin" />
+	<menuitem value="lv" label="Latvian" />
+	<menuitem value="ln" label="Lingala" />
+	<menuitem value="lt" label="Lithuanian" />
+	<menuitem value="lg" label="Luganda" />
+	<menuitem value="mk" label="Macedonian" />
+	<menuitem value="mg" label="Malagasy" />
+	<menuitem value="ms" label="Malay" />
+	<menuitem value="ml" label="Malayalam" />
+	<menuitem value="mt" label="Maltese" />
+	<menuitem value="mi" label="Maori" />
+	<menuitem value="mr" label="Marathi" />
+	<menuitem value="mfe" label="Mauritian Creole" />
+	<menuitem value="mo" label="Moldavian" />
+	<menuitem value="mn" label="Mongolian" />
+	<menuitem value="sr-ME" label="Montenegrin" />
+	<menuitem value="ne" label="Nepali" />
+	<menuitem value="no" label="Norwegian" />
+	<menuitem value="nn" label="Norwegian (Nynorsk)" />
+	<menuitem value="oc" label="Occitan" />
+	<menuitem value="or" label="Oriya" />
+	<menuitem value="om" label="Oromo" />
+	<menuitem value="ps" label="Pashto" />
+	<menuitem value="fa" label="Persian" />
+	<menuitem value="xx-pirate" label="Pirate" />
+	<menuitem value="pl" label="Polish" />
+	<menuitem value="pt-BR" label="Portuguese (Brazil)" />
+	<menuitem value="pt-PT" label="Portuguese (Portugal)" />
+	<menuitem value="pa" label="Punjabi" />
+	<menuitem value="qu" label="Quechua" />
+	<menuitem value="ro" label="Romanian" />
+	<menuitem value="rm" label="Romansh" />
+	<menuitem value="ru" label="Russian" />
+	<menuitem value="gd" label="Scots Gaelic" />
+	<menuitem value="sr" label="Serbian" />
+	<menuitem value="sh" label="Serbo-Croatian" />
+	<menuitem value="st" label="Sesotho" />
+	<menuitem value="sn" label="Shona" />
+	<menuitem value="sd" label="Sindhi" />
+	<menuitem value="si" label="Sinhalese" />
+	<menuitem value="sk" label="Slovak" />
+	<menuitem value="sl" label="Slovenian" />
+	<menuitem value="so" label="Somali" />
+	<menuitem value="es" label="Spanish" />
+	<menuitem value="su" label="Sundanese" />
+	<menuitem value="sw" label="Swahili" />
+	<menuitem value="sv" label="Swedish" />
+	<menuitem value="tg" label="Tajik" />
+	<menuitem value="ta" label="Tamil" />
+	<menuitem value="tt" label="Tatar" />
+	<menuitem value="te" label="Telugu" />
+	<menuitem value="th" label="Thai" />
+	<menuitem value="ti" label="Tigrinya" />
+	<menuitem value="to" label="Tonga" />
+	<menuitem value="tr" label="Turkish" />
+	<menuitem value="tk" label="Turkmen" />
+	<menuitem value="tw" label="Twi" />
+	<menuitem value="ug" label="Uighur" />
+	<menuitem value="uk" label="Ukrainian" />
+	<menuitem value="ur" label="Urdu" />
+	<menuitem value="uz" label="Uzbek" />
+	<menuitem value="vi" label="Vietnamese" />
+	<menuitem value="cy" label="Welsh" />
+	<menuitem value="xh" label="Xhosa" />
+	<menuitem value="yi" label="Yiddish" />
+	<menuitem value="yo" label="Yoruba" />
+	<menuitem value="zu" label="Zulu"/>
+      </menupopup>
+    </menulist>
+  </vbox>
+  <separator />
+  <vbox>
+    <label value="Google Search Languages:"/>    
+    <groupbox id="googlesharing-search-language">
+      <caption>
+	<checkbox id="lang_all" label="All Languages" />
+      </caption>
+      <grid style="font-size:10px;">
+	<columns>
+	  <column>
+	    <checkbox id="lang_af" label="Afrikaans" />
+	    <checkbox id="lang_ar" label="Arabic" />
+	    <checkbox id="lang_hy" label="Armenian" />
+	    <checkbox id="lang_be" label="Belarusian" />
+	    <checkbox id="lang_bg" label="Bulgarian" />
+	    <checkbox id="lang_ca" label="Catalan" />
+	    <checkbox id="lang_zh-CN" label="Chinese (Simplified)" />
+	    <checkbox id="lang_zh-TW" label="Chinese (Traditional)" />
+	    <checkbox id="lang_hr" label="Croatian" />
+	    <checkbox id="lang_cs" label="Czech" />
+	    <checkbox id="lang_da" label="Danish" />
+	  </column>
+	  <column>
+	    <checkbox id="lang_nl" label="Dutch" />
+	    <checkbox id="lang_en" label="English" />
+	    <checkbox id="lang_eo" label="Esperanto" />
+	    <checkbox id="lang_et" label="Estonian" />
+	    <checkbox id="lang_tl" label="Filipino" />
+	    <checkbox id="lang_fi" label="Finnish" />
+	    <checkbox id="lang_fr" label="French" />
+	    <checkbox id="lang_de" label="German" />
+	    <checkbox id="lang_el" label="Greek" />
+	    <checkbox id="lang_iw" label="Hebrew" />
+	    <checkbox id="lang_hu" label="Hungarian" />
+	    <checkbox id="lang_is" label="Icelandic" />
+	  </column>
+	  <column>
+	    <checkbox id="lang_id" label="Indonesian" />
+	    <checkbox id="lang_it" label="Italian" />
+	    <checkbox id="lang_ja" label="Japanese" />
+	    <checkbox id="lang_ko" label="Korean" />
+	    <checkbox id="lang_lv" label="Latvian" />
+	    <checkbox id="lang_lt" label="Lithuanian" />
+	    <checkbox id="lang_no" label="Norwegian" />
+	    <checkbox id="lang_fa" label="Persian" />
+	    <checkbox id="lang_pl" label="Polish" />
+	    <checkbox id="lang_pt" label="Portuguese" />
+	    <checkbox id="lang_ro" label="Romanian" />
+	    <checkbox id="lang_ru" label="Russian" />
+	  </column>
+	  <column>	
+	    <checkbox id="lang_sr" label="Serbian" />
+	    <checkbox id="lang_sk" label="Slovak" />
+	    <checkbox id="lang_sl" label="Slovenian" />
+	    <checkbox id="lang_es" label="Spanish" />
+	    <checkbox id="lang_sw" label="Swahili" />
+	    <checkbox id="lang_sv" label="Swedish" />
+	    <checkbox id="lang_th" label="Thai" />
+	    <checkbox id="lang_tr" label="Turkish" />
+	    <checkbox id="lang_uk" label="Ukrainian" />
+	    <checkbox id="lang_vi" label="Vietnamese" />
+	  </column>
+	</columns>
+      </grid>
+    </groupbox>
+  </vbox>
+</hbox>
+<!--
+<separator />
+<hbox>
+<tree id="filterTree" align="stretch" flex="1" style="width: 5em; height: 2em;" editable="true">
+      <treecols>
+	<treecol flex="1" id="filterEnabled" label="Enabled" type="checkbox" editable="true" />
+	<treecol flex="1" id="filterName" label="Filter Name" editable="false" />
+	<treecol flex="1" id="filterExpression" label="Filter Expression" editable="false"/>
+      </treecols>
+
+      <treechildren />
+</tree>
+<separator />
+<vbox>
+	<button id="add-filter-button" pack="start" label="Add Filter" onclick="onAddFilter();"/>
+	<button id="edit-filter-button" pack="start" label="Edit Filter" onclick="onEditFilter();"/>
+	<button id="remove-filter-button" pack="start" label="Remove Filter" onclick="onRemoveFilter();"/>
+</vbox>
+
+</hbox>
+-->
+</vbox>
+</dialog>	

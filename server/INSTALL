@@ -1,0 +1,5 @@
+To do a system installation, run:
+
+sudo python setup.py install
+
+You will then be able to run googleshare -h for help.

@@ -1,0 +1,2 @@
+content     googlesharing    chrome/content/
+overlay chrome://browser/content/browser.xul chrome://googlesharing/content/googlesharing.xul

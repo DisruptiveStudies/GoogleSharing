@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="options.css" type="text/css"?>
+
+<dialog id="googlesharing-options" title="GoogleSharing Proxy Preferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="620" height="200" buttons="accept,cancel" onload="onOptionsLoad();" ondialogaccept="return onOptionsSave();">
+
+<!--
+<prefwindow id="BrowserPreferences" title="Google Sharing Proxy Preferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" width="600px" height="200px" buttons="accept,cancel" ondialogcancel="alert();">
+-->
+<script src="Proxy.js"/>
+<script src="Filter.js"/>
+<script src="ProxyManager.js"/>
+<script src="options.js" />
+ 
+<!--
+<prefpane id="firemole-pane" label="Secure Proxy Settings" onpaneload="onOptionsLoad()" >
+
+  <preferences></preferences>
+-->
+<vbox flex="0">
+<hbox flex="10">
+  <separator />
+  <tree id="proxyTree" align="stretch" flex="1" editable="true">
+  <treecols>
+     <treecol id="proxyEnabled" label="Enabled" type="checkbox" editable="true" />
+<!--
+     <treecol id="proxyName" label="Proxy" primary="true" flex="1" editable="false"/>  
+-->
+     <splitter class="tree-splitter" />
+     <treecol id="proxyHost" label="Proxy Hostname    " flex="1" editable="false"/>
+     <splitter class="tree-splitter" />
+     <treecol id="proxyHTTPPort" label="HTTP" flex="1" editable="false"/>
+     <splitter class="tree-splitter" />
+     <treecol id="proxySSLPort" label="SSL" flex="1" editable="false"/>
+
+  </treecols>
+  <treechildren />  
+  </tree>
+
+  <separator />
+  <vbox flex="0">
+    <button id="add-proxy-button" pack="start" label="Add Proxy" onclick="onAddProxy();" />
+    <button id="edit-proxy-button" pack="start" label="Edit Proxy" onclick="onEditProxy();" />
+    <button id="remove-proxy-button" pack="start" label="Remove Proxy" onclick="onRemoveProxy();"/>
+<!--
+    <separator />
+
+    <button id="up-button" pack="start" onclick="onMoveProxyUp();" label="Move Up" />
+    <button id="down-button" pack="start" onclick="onMoveProxyDown();" label="Move Down" />
+-->
+  </vbox>
+</hbox>
+<checkbox id="upgrade-ssl" label="Upgrade to SSL when possible." />
+</vbox>
+<!--
+</prefpane>
+ 
+</prefwindow>
+-->
+</dialog>
