@@ -22,6 +22,7 @@ var GoogleShare = {
 
   onLoad: function(event) {
     this.initializeGoogleSharingManager();
+    this.addToAddonBar();
     this.registerStatusObserver();
     this.updateLocalStatus();
     this.updateShortStatusOption();
@@ -30,6 +31,16 @@ var GoogleShare = {
   initializeGoogleSharingManager: function() {
     this.googleSharingManager = Components.classes['@thoughtcrime.org/googlesharingmanager;1']
     .getService().wrappedJSObject;
+  },
+
+  addToAddonBar: function() {
+    var addonBar = document.getElementById("addon-bar");
+    if (addonBar) {
+      if (!document.getElementById("googlesharing-panel")) {
+	addonBar.insertItem("googlesharing-panel");
+	addonBar.collapsed = false;
+      }
+    }
   },
 
   registerStatusObserver: function() {
@@ -106,9 +117,9 @@ var GoogleShare = {
 
   setEnabledStatus: function() {
     if (this.googleSharingManager.isShortStatus())
-      document.getElementById("googlesharing-panel").label="GS";
+      this.setPanelLabel("GS");
     else
-      document.getElementById("googlesharing-panel").label="Google Sharing Enabled";
+      this.setPanelLabel("Google Sharing Enabled");
 
     document.getElementById("googlesharing-panel").setAttribute("style", "color: green;");
     document.getElementById("googlesharing-status-context").label = "Disable";
@@ -116,12 +127,20 @@ var GoogleShare = {
 
   setDisabledStatus: function() {
     if (this.googleSharingManager.isShortStatus())
-      document.getElementById("googlesharing-panel").label = "GS";
+      this.setPanelLabel("GS");
     else
-      document.getElementById("googlesharing-panel").label = "Google Sharing Disabled"
+      this.setPanelLabel("Google Sharing Disabled");
 
     document.getElementById("googlesharing-panel").setAttribute("style", "color: red;");
     document.getElementById("googlesharing-status-context").label = "Enable";
+  },
+
+  setPanelLabel: function(text) {
+    var panel = document.getElementById("googlesharing-panel");
+    if (panel.textContent)
+      panel.textContent = text;
+    else
+      panel.label = text;
   },
 
   updateSystemStatus: function() {

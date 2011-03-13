@@ -1,5 +1,6 @@
 content     googlesharing    chrome/content/
-overlay chrome://browser/content/browser.xul chrome://googlesharing/content/googlesharing.xul
+overlay chrome://browser/content/browser.xul chrome://googlesharing/content/googlesharing.xul appversion<4.0
+overlay chrome://browser/content/browser.xul chrome://googlesharing/content/googlesharing-4.xul appversion>=4.0
 
 category content-policy ContentPolicy @thoughtcrime.org/gscontentpolicy;1
 

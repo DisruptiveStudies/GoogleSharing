@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<overlay id="sample" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+ <script src="Proxy.js"/>
+ <script src="Filter.js"/>
+ <script src="ShuffleCloser.js"/>
+ <script src="DataShuffler.js"/>
+ <script src="ProxyManager.js"/>
+ <script src="ConnectionManager.js"/>
+ <script src="LocalProxy.js"/>
+ <script src="options.js" />
+ <script src="googlesharing.js"/> 
+
+ <toolbarpalette id="BrowserToolbarPalette" mode="text">
+   <toolbarbutton id="googlesharing-panel" class="chromeclass-toolbar-additional" onclick="GoogleShare.onStatusBarClick(event);" context="googlesharing-menu">Loading...</toolbarbutton>
+ </toolbarpalette>
+
+ <popupset>
+   <menupopup id="googlesharing-menu">
+     <menuitem label="Options" default="true"
+               onclick="window.openDialog('chrome://googlesharing/content/options.xul', 'dialog', 'modal');"/>
+     <menuitem id="googlesharing-status-context" label="Enable" onclick="GoogleShare.onStatusBarClick(event);"/>
+     <menuitem id="googlesharing-status-length" label="Short Status" onclick="GoogleShare.onToggleShortStatus(event);"/>
+   </menupopup>
+ </popupset>
+
+</overlay>
+
