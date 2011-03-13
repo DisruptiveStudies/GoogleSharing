@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>googlesharing@extension.thoughtcrime.org</em:id>
-    <em:version>0.20</em:version>
+    <em:version>0.21</em:version>
     <em:type>2</em:type>
     <em:optionsURL>chrome://googlesharing/content/options.xul</em:optionsURL>
     <em:iconURL>chrome://googlesharing/content/images/googlesharing.png</em:iconURL>
@@ -17,7 +17,7 @@
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
         <em:minVersion>3.0</em:minVersion>
-        <em:maxVersion>3.6.*</em:maxVersion>
+        <em:maxVersion>4.0.*</em:maxVersion>
       </Description>
     </em:targetApplication>
    
