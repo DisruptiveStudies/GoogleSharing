@@ -1,2 +1,10 @@
 content     googlesharing    chrome/content/
 overlay chrome://browser/content/browser.xul chrome://googlesharing/content/googlesharing.xul
+
+category content-policy ContentPolicy @thoughtcrime.org/gscontentpolicy;1
+
+component {cb985df0-5300-11df-9879-0800200c9a66} components/ContentPolicy.js
+contract @thoughtcrime.org/gscontentpolicy;1 {cb985df0-5300-11df-9879-0800200c9a66}
+
+component {d29c7ea0-fd61-11de-8a39-0800200c9a66} components/GoogleSharingManager.js
+contract @thoughtcrime.org/googlesharingmanager;1 {d29c7ea0-fd61-11de-8a39-0800200c9a66}
