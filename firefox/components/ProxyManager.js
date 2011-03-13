@@ -58,10 +58,10 @@ ProxyManager.prototype.removeProxyAtIndex = function(index) {
 };
 
 ProxyManager.prototype.getSettingsFile = function() {
-  var extensionManager = Components.classes["@mozilla.org/extensions/manager;1"].
-  getService(Components.interfaces.nsIExtensionManager);
+  var directoryService = Components.classes["@mozilla.org/file/directory_service;1"].
+  getService(Components.interfaces.nsIProperties);
 
-  var file = extensionManager.getInstallLocation(EXTENSION_ID).location.parent;
+  var file = directoryService.get("ProfD", Components.interfaces.nsIFile);
   file.append("googlesharing.xml");
   
   return file;

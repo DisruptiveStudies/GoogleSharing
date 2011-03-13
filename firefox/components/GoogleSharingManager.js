@@ -119,9 +119,17 @@ GoogleSharingManager.prototype = {
   enabled: false, 
 
   initializeExtensionVersion: function() {
-    var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
-    .getService(Components.interfaces.nsIExtensionManager);
-    this.extensionVersion = gExtensionManager.getItemForID("googlesharing@extension.thoughtcrime.org").version;
+    var uuid = "googlesharing@extension.thoughtcrime.org";
+    if ("@mozilla.org/extensions/manager;1" in Components.classes) {
+      var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"]
+      .getService(Components.interfaces.nsIExtensionManager);
+      this.extensionVersion = gExtensionManager.getItemForID(uuid).version;
+    } else {
+      // Geko 2.0
+      Components.utils.import("resource://gre/modules/AddonManager.jsm");
+      var self = this;
+      AddonManager.getAddonByID(uuid, function(addon) { self.extensionVersion = addon.version; });
+    }
   },
 
   initializeConnectionManager: function() {
