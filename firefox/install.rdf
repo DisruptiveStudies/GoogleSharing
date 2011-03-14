@@ -9,6 +9,7 @@
     <em:type>2</em:type>
     <em:optionsURL>chrome://googlesharing/content/options.xul</em:optionsURL>
     <em:iconURL>chrome://googlesharing/content/images/googlesharing.png</em:iconURL>
+    <em:unpack>true</em:unpack>
    
     <!-- Target Application this extension can install into, 
          with minimum and maximum supported versions. --> 
