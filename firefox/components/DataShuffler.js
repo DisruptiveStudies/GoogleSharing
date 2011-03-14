@@ -36,6 +36,8 @@ function DataShuffler(localProxy, clientTransport, serverTransport) {
 
   this.clientOutputStream.setOutputStream(this.rawClientOutputStream);
   this.serverOutputStream.setOutputStream(this.rawServerOutputStream);
+
+  this.workerThread          = Components.classes["@mozilla.org/thread-manager;1"].getService(Components.interfaces.nsIThreadManager).currentThread;
 }
 
 DataShuffler.prototype.shuffleStreams = function(fromStream, toStream) {
@@ -67,7 +69,7 @@ DataShuffler.prototype.onInputStreamReady = function(inputStream) {
       this.rawClientInputStream.close();
       return;
     }    
-    this.rawClientInputStream.asyncWait(this, 0, 0, null);
+    this.rawClientInputStream.asyncWait(this, 0, 0, this.workerThread);
   } else {
     try {
       this.shuffleStreams(this.serverInputStream, this.clientOutputStream);
@@ -85,7 +87,7 @@ DataShuffler.prototype.onInputStreamReady = function(inputStream) {
       return;
     }
 
-    this.rawServerInputStream.asyncWait(this, 0, 0, null);
+    this.rawServerInputStream.asyncWait(this, 0, 0, this.workerThread);
   }
 };
 
@@ -95,6 +97,6 @@ DataShuffler.prototype.notifyProxyFailure = function(localProxy) {
 };
 
 DataShuffler.prototype.shuffle = function() {
-  this.rawClientInputStream.asyncWait(this, 0, 0, null);
-  this.rawServerInputStream.asyncWait(this, 0, 0, null);
+  this.rawClientInputStream.asyncWait(this, 0, 0, this.workerThread);
+  this.rawServerInputStream.asyncWait(this, 0, 0, this.workerThread);
 };
